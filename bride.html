@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bride Page</title>
+
+  <!-- Cute Kikelet-like font -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      /* Background image slot */
+      background: url("background.jpg");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+
+      font-family:'Quicksand', sans-serif;
+      text-align:center;
+      overflow:hidden;
+    }
+
+    /* Falling flowers */
+    .flower{
+      position:fixed;
+      top:-40px;
+      font-size:26px;
+      animation:fall linear infinite;
+      opacity:0.9;
+      z-index:1;
+    }
+
+    @keyframes fall{
+      to{ transform:translateY(110vh); }
+    }
+
+    .card{
+      background:rgba(255,255,255,0.9);
+      border:3px solid #caa24d;
+      border-radius:22px;
+      padding:42px 32px;
+      width:90%;
+      max-width:540px;
+      box-shadow:0 15px 30px rgba(0,0,0,0.15);
+      z-index:2;
+    }
+
+    h1{
+      font-size:2rem; /* increased */
+      color:#7b2e3b;
+      margin-bottom:18px;
+      font-weight:600;
+    }
+
+    p{
+      font-size:1.05rem; /* increased */
+      color:#444;
+      margin-bottom:26px;
+      line-height:1.7;
+    }
+
+    .question{
+      font-size:1.25rem;
+      font-weight:600;
+      margin-bottom:25px;
+    }
+
+    .btn{
+      background:#7b2e3b;
+      color:#fff;
+      padding:14px 34px; /* bigger buttons */
+      margin:10px;
+      border-radius:34px;
+      border:none;
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:#9a3d4c;
+      transform:scale(1.05);
+    }
+
+    .back-btn{
+      background:#555;
+      margin-top:20px;
+    }
+
+    .hidden{ display:none; }
+
+    img{
+      max-width:100%;
+      border-radius:18px;
+      margin-top:22px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- More falling flowers -->
+  <span class="flower" style="left:5%; animation-duration:7s;">🌸</span>
+  <span class="flower" style="left:12%; animation-duration:9s;">🌺</span>
+  <span class="flower" style="left:22%; animation-duration:8s;">🌼</span>
+  <span class="flower" style="left:32%; animation-duration:10s;">🌸</span>
+  <span class="flower" style="left:42%; animation-duration:7s;">🌺</span>
+  <span class="flower" style="left:52%; animation-duration:9s;">🌼</span>
+  <span class="flower" style="left:62%; animation-duration:8s;">🌸</span>
+  <span class="flower" style="left:72%; animation-duration:10s;">🌺</span>
+  <span class="flower" style="left:82%; animation-duration:9s;">🌼</span>
+  <span class="flower" style="left:92%; animation-duration:8s;">🌸</span>
+
+  <div class="card">
+    <!-- ORIGINAL MESSAGE RESTORED -->
+    <h1>A warm and heartfelt welcome to the most elegant Boudi-to-be 🤍</h1>
+
+    <p>
+      Our brother choose you with his heart,<br>
+      and we couldn’t be happier to welcome you into our family.
+    </p>
+
+    <div id="questionBlock">
+      <div class="question">Will you accept our invitation?</div>
+      <button class="btn" onclick="acceptInvite()">Yes</button>
+      <button class="btn" onclick="declineInvite()">No</button>
+    </div>
+
+    <!-- NO click -->
+    <div id="noMessage" class="hidden">
+      <p>
+        <strong>I know you clicked it just out of curiosity 😄</strong><br>
+        And I know you’re definitely coming for it 🤍
+      </p>
+      <button class="btn back-btn" onclick="goBack()">⬅ Back</button>
+    </div>
+
+    <!-- YES click -->
+    <div id="yesContent" class="hidden">
+      <p>
+        <strong>Yay! 🌸</strong><br>
+        We’re so excited to celebrate this beautiful moment with you.
+      </p>
+
+      <!-- Bride photo place -->
+      <img src="bride-image.jpg" alt="Bengali Bride">
+
+      <!-- Song place -->
+      <audio id="bgMusic" src="song-link.mp3"></audio>
+    </div>
+  </div>
+
+<script>
+  function acceptInvite(){
+    document.getElementById('questionBlock').classList.add('hidden');
+    document.getElementById('yesContent').classList.remove('hidden');
+    document.getElementById('bgMusic').play();
+  }
+
+  function declineInvite(){
+    document.getElementById('questionBlock').classList.add('hidden');
+    document.getElementById('noMessage').classList.remove('hidden');
+  }
+
+  function goBack(){
+    document.getElementById('noMessage').classList.add('hidden');
+    document.getElementById('questionBlock').classList.remove('hidden');
+  }
+</script>
+
+</body>
+</html>

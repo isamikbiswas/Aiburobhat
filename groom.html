@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groom Invitation</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      background: url("background.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      font-family:'Quicksand', sans-serif;
+      text-align:center;
+      overflow:hidden;
+      padding:16px;
+    }
+
+    /* Falling alcohol emojis */
+    .alcohol{
+      position:fixed;
+      top:-40px;
+      font-size:26px;
+      animation:fall linear infinite;
+      opacity:0.9;
+      z-index:1;
+    }
+
+    @keyframes fall{
+      to{ transform:translateY(110vh); }
+    }
+
+    .card{
+      background:rgba(255,255,255,0.9);
+      border:3px solid #caa24d;
+      border-radius:22px;
+      padding:42px 32px;
+      width:100%;
+      max-width:540px;
+      box-shadow:0 15px 30px rgba(0,0,0,0.15);
+      z-index:2;
+      position:relative;
+    }
+
+    h1{
+      font-size:1.9rem;
+      color:#7b2e3b;
+      margin-bottom:15px;
+      font-weight:600;
+    }
+
+    p{
+      font-size:1.05rem;
+      color:#444;
+      margin-bottom:25px;
+      line-height:1.7;
+    }
+
+    .question{
+      font-size:1.25rem;
+      font-weight:600;
+      margin-bottom:18px;
+    }
+
+    .btn{
+      background:#7b2e3b;
+      color:#fff;
+      padding:14px 34px;
+      margin:10px;
+      border-radius:34px;
+      border:none;
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:#9a3d4c;
+      transform:scale(1.05);
+    }
+
+    .back-btn{
+      background:#555;
+      margin-top:20px;
+    }
+
+    .hidden{ display:none; }
+
+    img{
+      max-width:100%;
+      border-radius:18px;
+      margin-top:22px;
+    }
+
+    /* Dodge button smoothness */
+    #yesWrapper{
+      display:inline-block;
+      position:relative;
+      transition:transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Falling alcohol emojis -->
+  <span class="alcohol" style="left:5%; animation-duration:7s;">🥃</span>
+  <span class="alcohol" style="left:12%; animation-duration:9s;">🍺</span>
+  <span class="alcohol" style="left:20%; animation-duration:8s;">🍾</span>
+  <span class="alcohol" style="left:30%; animation-duration:10s;">🥃</span>
+  <span class="alcohol" style="left:40%; animation-duration:7s;">🍺</span>
+  <span class="alcohol" style="left:50%; animation-duration:9s;">🍾</span>
+  <span class="alcohol" style="left:60%; animation-duration:8s;">🥃</span>
+  <span class="alcohol" style="left:70%; animation-duration:10s;">🍺</span>
+  <span class="alcohol" style="left:80%; animation-duration:9s;">🍾</span>
+  <span class="alcohol" style="left:90%; animation-duration:8s;">🥃</span>
+
+  <div class="card">
+    <h1>A warm invitation to our Groom 🤍</h1>
+
+    <p>
+      As you step into a new chapter of life,  
+      we would love to celebrate this special moment with you.
+    </p>
+
+    <!-- Bachelor party checkbox -->
+    <div style="text-align:left; margin-bottom:18px;">
+      <label style="font-size:0.95rem; color:#444; cursor:pointer;">
+        <input type="checkbox" id="partyCheck" style="margin-right:8px;">
+        I promise to throw a proper bachelor’s party for the cousins 🥃🎉
+      </label>
+    </div>
+
+    <div id="questionBlock">
+      <div class="question">Will you join us for the Aiburobhat?</div>
+
+      <!-- YES button wrapper -->
+      <div id="yesWrapper">
+        <button class="btn" id="yesBtn">Yes</button>
+      </div>
+
+      <button class="btn" onclick="declineInvite()">No</button>
+    </div>
+
+    <!-- NO -->
+    <div id="noMessage" class="hidden">
+      <p style="font-weight:600; font-size:1.1rem;">
+        তুই গাঁড় মারাগা 😒!!
+      </p>
+      <button class="btn back-btn" onclick="goBack()">⬅ Back</button>
+    </div>
+
+    <!-- YES -->
+    <div id="yesContent" class="hidden">
+      <p>
+        <strong>We’re really happy you’ll be there 🤍</strong><br>
+        Your presence will mean a lot to us and make the celebration complete.
+      </p>
+
+      <img src="groom-image.jpg" alt="Groom Image">
+      <audio id="bgMusic" src="song.mp3"></audio>
+
+      <button class="btn back-btn" onclick="goBackFromYes()">⬅ Back</button>
+    </div>
+  </div>
+
+<script>
+  const yesBtn = document.getElementById("yesBtn");
+  const yesWrapper = document.getElementById("yesWrapper");
+  const partyCheck = document.getElementById("partyCheck");
+
+function moveYes(){
+  if(partyCheck.checked) return;
+  const x = Math.random() * 400 - 250;
+const y = Math.random() * 280 - 190;
+
+  yesWrapper.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+
+  // Desktop hover
+  yesBtn.addEventListener("mouseenter", moveYes);
+
+  // Mobile tap
+  yesBtn.addEventListener("touchstart", function(e){
+    if(!partyCheck.checked){
+      e.preventDefault();
+      moveYes();
+    }
+  });
+
+  // Actual click
+  yesBtn.addEventListener("click", function(){
+    if(!partyCheck.checked){
+      alert("Bachelor party confirm korle egiye jawa jabe 😌🥃");
+      return;
+    }
+    acceptInvite();
+  });
+
+  function acceptInvite(){
+    document.getElementById("questionBlock").classList.add("hidden");
+    document.getElementById("yesContent").classList.remove("hidden");
+    document.getElementById("bgMusic").play();
+  }
+
+  function declineInvite(){
+    document.getElementById("questionBlock").classList.add("hidden");
+    document.getElementById("noMessage").classList.remove("hidden");
+  }
+
+  function goBack(){
+    document.getElementById("noMessage").classList.add("hidden");
+    document.getElementById("questionBlock").classList.remove("hidden");
+  }
+
+  function goBackFromYes(){
+    const music = document.getElementById("bgMusic");
+    music.pause();
+    music.currentTime = 0;
+
+    document.getElementById("yesContent").classList.add("hidden");
+    document.getElementById("questionBlock").classList.remove("hidden");
+  }
+</script>
+
+</body>
+</html>

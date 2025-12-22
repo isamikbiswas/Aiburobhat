@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Who Are You?</title>
+
+  <!-- Kikelet-like cute font -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      /* Background image + soft overlay */
+     background: url("background.jpg");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+
+      font-family:'Quicksand', sans-serif;
+      text-align:center;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.9);
+      border:3px solid #caa24d;
+      border-radius:20px;
+      padding:40px 30px;
+      width:90%;
+      max-width:500px;
+      box-shadow:0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    h1{
+      font-size:1.4rem;
+      color:#7b2e3b;
+      margin-bottom:12px;
+      font-weight:600;
+    }
+
+    p{
+      color:#555;
+      margin-bottom:30px;
+      line-height:1.6;
+      font-size:0.95rem;
+    }
+
+    h2{
+      font-size:1.8rem;
+      color:#7b2e3b;
+      margin-bottom:22px;
+      font-weight:600;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .btn{
+      text-decoration:none;
+      background:#7b2e3b;
+      color:#fff;
+      padding:16px 12px;
+      border-radius:18px;
+      font-weight:600;
+      transition:0.3s;
+      font-size:0.95rem;
+    }
+
+    .btn:hover{
+      background:#9a3d4c;
+      transform:scale(1.03);
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Welcome to the first Aiburobhat in our cousins’ group 🎉🤍</h1>
+
+  <p>
+    A little celebration, a lot of love,<br>
+    and memories we’ll cherish forever.
+  </p>
+
+  <h2>Who are you?</h2>
+
+  <div class="grid">
+    <a href="bride.html" class="btn">👰 Bride</a>
+    <a href="groom.html" class="btn">🤵 Groom</a>
+    <a href="bride-side.html" class="btn">👩‍👩‍👦 Bride’s Side</a>
+    <a href="groom-side.html" class="btn">👨‍👩‍👦 Groom’s Side</a>
+  </div>
+</div>
+
+</body>
+</html>

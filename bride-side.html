@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bride's Side</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      background: url("bride-side.jpg");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+
+      font-family:'Quicksand', sans-serif;
+      text-align:center;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.9);
+      border:3px solid #caa24d;
+      border-radius:22px;
+      padding:42px 32px;
+      width:90%;
+      max-width:540px;
+      box-shadow:0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    h1{
+      font-size:1.9rem;
+      color:#7b2e3b;
+      margin-bottom:15px;
+      font-weight:600;
+    }
+
+    p{
+      font-size:1.05rem;
+      color:#444;
+      margin-bottom:25px;
+      line-height:1.7;
+    }
+
+    .btn{
+      background:#7b2e3b;
+      color:#fff;
+      padding:14px 34px;
+      margin:10px;
+      border-radius:34px;
+      border:none;
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:#9a3d4c;
+      transform:scale(1.05);
+    }
+
+    .back-btn{
+      background:#555;
+      margin-top:18px;
+    }
+
+    .hidden{ display:none; }
+
+    img{
+      max-width:100%;
+      border-radius:18px;
+      margin-top:22px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Girls, our girl’s Aiburobhat is here 🌸</h1>
+
+  <p>
+    Love, laughter, traditions, and a beautiful celebration.<br>
+    Will you be there to make it even more special?
+  </p>
+
+  <div id="questionBlock">
+    <button class="btn" onclick="yesClick()">Of course 💖</button>
+    <button class="btn" onclick="noClick()">Sadly no</button>
+  </div>
+
+  <!-- NO -->
+  <div id="noMessage" class="hidden">
+    <p>We’ll miss you, beautiful soul 🤍</p>
+    <button class="btn back-btn" onclick="goBack()">⬅ Back</button>
+  </div>
+
+  <!-- YES -->
+  <div id="yesContent" class="hidden">
+    <p>
+      We can’t wait to celebrate together 🤍<br>
+      Here’s the invitation with all the details.
+    </p>
+
+    <!-- Invitation card space -->
+    <img src="invitation.jpg" alt="Invitation Card">
+  </div>
+</div>
+
+<script>
+  function yesClick(){
+    questionBlock.classList.add('hidden');
+    yesContent.classList.remove('hidden');
+  }
+
+  function noClick(){
+    questionBlock.classList.add('hidden');
+    noMessage.classList.remove('hidden');
+  }
+
+  function goBack(){
+    noMessage.classList.add('hidden');
+    questionBlock.classList.remove('hidden');
+  }
+</script>
+
+</body>
+</html>
